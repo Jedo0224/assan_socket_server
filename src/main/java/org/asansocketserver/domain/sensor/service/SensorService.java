@@ -68,6 +68,7 @@ public class SensorService {
     private final NotificationService notificationService;
     private final SensorDataRepository sensorDataRepository;
 
+
     private Watch findByWatchOrThrow(Long id) {
         return watchRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(WATCH_UUID_NOT_FOUND));
