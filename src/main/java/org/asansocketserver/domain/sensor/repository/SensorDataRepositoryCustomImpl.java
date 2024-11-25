@@ -1,8 +1,8 @@
-package org.asansocketserver.batch.cdc.repository;
+package org.asansocketserver.domain.sensor.repository;
 
 import lombok.RequiredArgsConstructor;
-import org.asansocketserver.batch.cdc.entity.SensorData;
-import org.asansocketserver.batch.cdc.entity.SensorRow;
+import org.asansocketserver.domain.sensor.entity.sensorData.SensorData;
+import org.asansocketserver.domain.sensor.entity.sensorData.SensorRow;
 import org.asansocketserver.domain.watch.entity.Watch;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

@@ -1,6 +1,7 @@
-package org.asansocketserver.batch.cdc.repository;
+package org.asansocketserver.domain.sensor.repository;
 
-import org.asansocketserver.batch.cdc.entity.SensorData;
+
+import org.asansocketserver.domain.sensor.entity.sensorData.SensorData;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

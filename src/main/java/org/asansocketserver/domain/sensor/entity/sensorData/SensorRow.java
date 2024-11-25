@@ -1,4 +1,4 @@
-package org.asansocketserver.batch.cdc.entity;
+package org.asansocketserver.domain.sensor.entity.sensorData;
 
 import lombok.AccessLevel;
 import lombok.Builder;

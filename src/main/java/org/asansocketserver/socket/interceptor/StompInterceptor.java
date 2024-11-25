@@ -2,10 +2,11 @@ package org.asansocketserver.socket.interceptor;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.asansocketserver.batch.cdc.entity.SensorData;
-import org.asansocketserver.batch.cdc.repository.SensorDataRepository;
+
 import org.asansocketserver.domain.position.entity.Position;
 import org.asansocketserver.domain.position.mongorepository.PositionMongoRepository;
+import org.asansocketserver.domain.sensor.entity.sensorData.SensorData;
+import org.asansocketserver.domain.sensor.repository.SensorDataRepository;
 import org.asansocketserver.domain.sensor.scheduler.SensorScheduler;
 import org.asansocketserver.domain.watch.entity.Watch;
 import org.asansocketserver.domain.watch.entity.WatchLive;
