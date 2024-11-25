@@ -67,6 +67,7 @@ public class SensorService {
     private final CoordinateRepository coordinateRepository;
     private final NotificationService notificationService;
     private final SensorDataRepository sensorDataRepository;
+
     private Watch findByWatchOrThrow(Long id) {
         return watchRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(WATCH_UUID_NOT_FOUND));
@@ -76,8 +77,6 @@ public class SensorService {
         return sensorSendStateRepository.findById(id)
                 .orElse(null);
     }
-
-
 
 
     public void sensorSendState(StateRequestDto stateDTO) {
@@ -140,7 +139,6 @@ public class SensorService {
         String destination = "/queue/sensor/" + simpSessionAttributes.get("watchId");
 
         if (watch.get().getMaxHR() < heartRate.getValue()) {
-
             sendingOperations.convertAndSend(destination, SocketBaseResponse.of(MessageType.HIGH_HEART_RATE, CheckHeartRateDto.of(watchId, watch.get().getName(), watch.get().getHost(), imageId
                     , watch.get().getCurrentLocation(), "blue", heartRate.getValue())));
             notificationService.createAndSaveNotification(watch.get(), imageId, position,"HIGH-HEART-RATE");

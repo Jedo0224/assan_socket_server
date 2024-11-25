@@ -1,6 +1,5 @@
-package org.asansocketserver.batch.cdc.entity;
+package org.asansocketserver.domain.sensor.entity.sensorData;
 
-import jakarta.persistence.Id;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;

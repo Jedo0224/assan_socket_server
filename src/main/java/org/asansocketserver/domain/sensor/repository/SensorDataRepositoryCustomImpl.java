@@ -1,4 +1,4 @@
-package org.asansocketserver.batch.cdc.repository;
+package org.asansocketserver.domain.sensor.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.asansocketserver.batch.cdc.entity.SensorData;

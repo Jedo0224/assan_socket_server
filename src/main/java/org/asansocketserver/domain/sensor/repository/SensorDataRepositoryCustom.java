@@ -1,4 +1,4 @@
-package org.asansocketserver.batch.cdc.repository;
+package org.asansocketserver.domain.sensor.repository;
 
 import org.asansocketserver.batch.cdc.entity.SensorRow;
 import org.asansocketserver.domain.watch.entity.Watch;
