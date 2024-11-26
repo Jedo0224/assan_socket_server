@@ -2,8 +2,8 @@ package org.asansocketserver.domain.watch.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.asansocketserver.batch.cdc.entity.SensorData;
-import org.asansocketserver.batch.cdc.repository.SensorDataRepository;
+import org.asansocketserver.domain.sensor.entity.sensorData.SensorData;
+import org.asansocketserver.domain.sensor.repository.SensorDataRepository;
 import org.asansocketserver.domain.image.dto.CoordinateIDAndPositionDTO;
 import org.asansocketserver.domain.image.dto.ImageIDAndPositionAndCoordinateDTO;
 import org.asansocketserver.domain.image.entity.Coordinate;
