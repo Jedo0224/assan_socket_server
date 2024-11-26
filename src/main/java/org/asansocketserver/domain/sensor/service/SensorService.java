@@ -73,7 +73,7 @@ public class SensorService {
                 .orElseThrow(() -> new EntityNotFoundException(WATCH_UUID_NOT_FOUND));
     }
 
-    
+
     private SensorSendState findBySensorSendStateOrNull(Long id) {
         return sensorSendStateRepository.findById(id)
                 .orElse(null);
