@@ -43,7 +43,7 @@ pipeline {
 
         stage('Deploy Application') {
             steps {
-                 // ~/.ssh 디렉토리 생성
+                // ~/.ssh 디렉토리 생성
                 sh 'mkdir -p /var/jenkins_home/.ssh'
 
                 // known_hosts 파일 생성 및 호스트 키 추가
@@ -56,9 +56,17 @@ pipeline {
                         sh """
                         ssh -i ${SSH_KEY} ubuntu@43.202.4.217 <<EOF
                         docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
-                        docker stop asan-socket-server || true
-                        docker rm asan-socket-server || true
-                        docker run -d --name asan-socket-server -p 8080:8080 ${DOCKER_IMAGE}:${DOCKER_TAG}
+
+                        # 컨테이너가 없으면 새로운 컨테이너 생성
+                        if [ ! \$(docker ps -q -f name=asan-socket-server) ]; then
+                            echo "Creating and starting new container..."
+                            docker run -d --name asan-socket-server -p 8080:8080 ${DOCKER_IMAGE}:${DOCKER_TAG}
+                        else
+                            echo "Stopping and removing existing container..."
+                            docker stop asan-socket-server || true
+                            docker rm asan-socket-server || true
+                            docker run -d --name asan-socket-server -p 8080:8080 ${DOCKER_IMAGE}:${DOCKER_TAG}
+                        fi
                         EOF
                         """
                     }
