@@ -41,28 +41,29 @@ pipeline {
             }
         }
 
-        stage('Deploy Application') {
-            steps {
-                // 호스트 키를 자동으로 추가
-                sh """
-                ssh-keyscan -H 43.202.4.217 >> ~/.ssh/known_hosts
-                """
 
-                withCredentials([sshUserPrivateKey(credentialsId: 'ssh-server-credentials-id', keyFileVariable: 'SSH_KEY')]) {
-                    sshagent(['ssh-server-credentials-id']) {
-                        sh """
-                        ssh -i ${SSH_KEY} ubuntu@43.202.4.217 <<EOF
-                        docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
-                        docker stop asan-socket-server || true
-                        docker rm asan-socket-server || true
-                        docker run -d --name asan-socket-server -p 8080:8080 ${DOCKER_IMAGE}:${DOCKER_TAG}
-                        EOF
-                        """
+
+    stage('Deploy Application') {
+                steps {
+                    // 호스트 키를 자동으로 추가
+                    sh """
+                    ssh-keyscan -H 43.202.4.217 >> ~/.ssh/known_hosts
+                    """
+
+                    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-server-credentials-id', keyFileVariable: 'SSH_KEY')]) {
+                        sshagent(['ssh-server-credentials-id']) {
+                            sh """
+                            ssh -i ${SSH_KEY} ubuntu@43.202.4.217 <<EOF
+                            docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
+                            docker stop asan-socket-server || true
+                            docker rm asan-socket-server || true
+                            docker run -d --name asan-socket-server -p 8080:8080 ${DOCKER_IMAGE}:${DOCKER_TAG}
+                            EOF
+                            """
+                        }
                     }
                 }
             }
-        }
-    }
 
     post {
         always {
