@@ -16,7 +16,6 @@ import org.asansocketserver.domain.watch.dto.web.request.WatchNoContactedRequest
 import org.asansocketserver.domain.watch.dto.web.request.WatchProhibitedCoordinatesUpdateRequestDto;
 import org.asansocketserver.domain.watch.dto.web.request.WatchTransferDto;
 import org.asansocketserver.domain.watch.dto.web.request.WatchUpdateRequestForWebDto;
-
 import org.asansocketserver.domain.watch.dto.web.response.*;
 import org.asansocketserver.domain.watch.entity.Watch;
 import org.asansocketserver.domain.watch.entity.WatchCoordinateProhibition;
