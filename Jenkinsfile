@@ -43,10 +43,15 @@ pipeline {
 
         stage('Deploy Application') {
             steps {
+                // ~/.ssh 디렉토리 생성
+                sh 'mkdir -p ~/.ssh'
+
                 // 호스트 키를 자동으로 추가
                 sh """
                 ssh-keyscan -H 43.202.4.217 >> ~/.ssh/known_hosts
                 """
+                // 파일 권한 설정
+                sh 'chmod 644 ~/.ssh/known_hosts'
 
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-server-credentials-id', keyFileVariable: 'SSH_KEY')]) {
                     sshagent(['ssh-server-credentials-id']) {
