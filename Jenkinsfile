@@ -48,7 +48,6 @@ pipeline {
 
                 // known_hosts 파일 생성 및 호스트 키 추가
                 sh 'ssh-keyscan -H 43.202.4.217 >> /var/jenkins_home/.ssh/known_hosts'
-
                 // 파일 권한 설정
                 sh 'chmod 644 /var/jenkins_home/.ssh/known_hosts'
 
