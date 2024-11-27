@@ -46,7 +46,7 @@ pipeline {
                 // 43.203.207.107 EC2에서 Docker 컨테이너 실행
                 sshagent(['ssh-server-credentials-id']) {
                     sh """
-                    ssh ubuntu@43.203.207.107 <<EOF
+                    ssh ubuntu@43.202.4.217 <<EOF
                     docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
                     docker stop asan-socket-server || true
                     docker rm asan-socket-server || true
