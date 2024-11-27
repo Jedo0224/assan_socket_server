@@ -58,7 +58,7 @@ pipeline {
                         docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
 
                         # 컨테이너가 없으면 새로운 컨테이너 생성
-                        if [ ! \$(docker ps -q -f name=asan-socket-server) ]; then
+                        if [ ! \$(docker ps -a -q -f name=asan-socket-server) ]; then
                             echo "Creating and starting new container..."
                             docker run -d --name asan-socket-server -p 8080:8080 ${DOCKER_IMAGE}:${DOCKER_TAG}
                         else
