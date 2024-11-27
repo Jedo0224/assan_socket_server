@@ -49,7 +49,6 @@ pipeline {
                         sh """
                         ssh-keyscan -H 43.202.4.217 >> ~/.ssh/known_hosts
                         """
-
                         withCredentials([sshUserPrivateKey(credentialsId: 'ssh-server-credentials-id', keyFileVariable: 'SSH_KEY')]) {
                             sshagent(['ssh-server-credentials-id']) {
                                 sh """
